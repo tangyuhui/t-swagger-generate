@@ -1,24 +1,40 @@
 {
-  "name": "node-file",
-  "version": "1.0.0",
+  "name": "t-swagger-generate",
+  "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "script/index.js",
   "scripts": {
     "start": "supervisor node script/index"
   },
+  "bin": {
+    "tang": "./bin/tang-cli.js"
+  },
+  "private": false,
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangyuhui/t-swagger-generate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tangyuhui/t-swagger-generate/issues"
+  },
+  "keywords": [
+    "swagger",
+    "generate"
+  ],
   "devDependencies": {
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "openbrowser": "^1.0.2",
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
     "dotenv": "^8.0.0",
     "js-beautify": "^1.10.2",
     "node-notifier": "^5.4.1",
     "zip-local": "^0.3.4"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "lodash": "^4.17.15"
   }
 }
