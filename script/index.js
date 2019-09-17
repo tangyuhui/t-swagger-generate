@@ -1,7 +1,7 @@
 const axios = require('axios')
 var express = require('express')
 var bodyParser = require('body-parser');
-const chalk = require('chalk');
+var path = require('path');
 const {renderApiFuns,renderApiConsts}= require('./apiGenerate')
 var openbrowser = require('openbrowser');
 /**
@@ -12,14 +12,16 @@ var openbrowser = require('openbrowser');
 function getApiDoc(docUrl){
     return axios.get(docUrl).then((res)=>{
         return res.data
+    }).catch(err=>{
+        return Promise.reject(err)
     })
 }
 
 module.exports.run = function(port=3000){
-    console.log(1)
 //创建一个Express的程序
     var app = express()
-    app.use(express.static('public'))
+    app.use(express.static(path.join(__dirname,'..','public')))
+    console.log(path.join(__dirname, '..','public'))
     app.use(bodyParser.json()); // for parsing application/json
     //设置允许跨域访问该服务.
     app.all('*', function (req, res, next) {
@@ -39,6 +41,8 @@ module.exports.run = function(port=3000){
         const {apiDoc:apiDocUrl} =  req.body
         getApiDoc(apiDocUrl).then(data=>{
             res.json(data)
+        }).catch(err=>{
+            res.json(err)
         })
         }else{
             res.json(null);
