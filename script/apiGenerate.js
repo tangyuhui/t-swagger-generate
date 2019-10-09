@@ -51,7 +51,7 @@ module.exports.renderApiFuns = function renderApiFuns(apiList){
     export function ${requestMethod}${compileUtil.getFunctionName(apiPath)}(params){
           var apiUrl = ${resourceName}.${compileUtil.getResouceName(apiPath)}
           apiUrl = dealApiParams(apiUrl,params)
-          ${renderAxiosFn(requestMethod)}
+          return ${renderAxiosFn(requestMethod)}
    }`
    apiFuncArray.push(fn)
 

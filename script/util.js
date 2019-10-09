@@ -95,25 +95,6 @@ class Log {
 }
 module.exports.Log = Log
 
-module.exports.Notify = class {
-  /**
-   * 开启客户端强提醒
-   * @param {*string} title 标题
-   * @param {*string} message 展示信息
-   * @param {*boolean} wait 等待回掉关闭
-   * @param {*function} cb 回掉
-   */
-  static showNotify (title, message, wait = false,  cb= () => {}) {
-    notifier.notify({
-      icon: path.join(__dirname, "../src/assets/logo.png"), // Absolute path (doesn't work on balloons)
-      title,
-      message,
-      wait,
-      sound: true // Only Notification Center or Windows Toasters
-    }, cb)
-  }
-}
-
 /**
  * 字符串Util
  */
@@ -344,16 +325,21 @@ module.exports.DateUtil = class {
   }
 }
 /**
- * @Author 唐钰惠
+ * @Author Tangyuhui
  * @Description 编译工具类。生成方法名、资源名
  */
 module.exports.compileUtil = class{
+  /**
+  /* @author Tangyuhui
+  /* @desc 获取方法名
+  /* @Date 2019-10-09 14:23:02 星期三
+  */
   static getFunctionName(apiName){
-    const urlArr = apiName.split('/')
+  	const urlArr =apiName.split('/')
     let funName=  urlArr.reduce((total,currentValue)=>{
     	  /*如果是{id}这种形式，就略过不处理*/
       if(currentValue!==''&&!/\{.*?\}/g.test(currentValue)){
-        return total+(currentValue.slice(0,1).toUpperCase() + currentValue.slice(1).toLowerCase());
+        return total+(currentValue.slice(0,1).toUpperCase() + currentValue.slice(1));
       }else{
         return total
       }
@@ -361,7 +347,7 @@ module.exports.compileUtil = class{
     return funName
   }
   static getResouceName(apiName){
-    return apiName.replace(/\//g,'_').replace(/\{|\}/g,'').toUpperCase().substring(1)
+    return apiName.replace(/([A-Z])/g,"_$1").replace(/\//g,'_').replace(/\{|\}/g,'').toUpperCase().substring(1)
   }
 }
 /**
