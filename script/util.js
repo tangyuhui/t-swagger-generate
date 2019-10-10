@@ -327,13 +327,9 @@ module.exports.DateUtil = class {
 /**
  * @Author Tangyuhui
  * @Description 编译工具类。生成方法名、资源名
+ * @Date 2019-10-10 11:55:33 星期四
  */
 module.exports.compileUtil = class{
-  /**
-  /* @author Tangyuhui
-  /* @desc 获取方法名
-  /* @Date 2019-10-09 14:23:02 星期三
-  */
   static getFunctionName(apiName){
   	const urlArr =apiName.split('/')
     let funName=  urlArr.reduce((total,currentValue)=>{
@@ -351,10 +347,10 @@ module.exports.compileUtil = class{
   }
 }
 /**
-/* @author Tangyuhui
-/* @desc 渲染axios方法
-/* @Date 2019-09-16 14:48:33 星期一
-*/
+ * @Author Tangyuhui
+ * @Description 渲染axios方法
+ * @Date 2019-10-10 11:55:33 星期四
+ */
 module.exports.renderAxiosFn = function renderAxiosFn(requestMethod){
   if(requestMethod==='get' || requestMethod==='delete' ){
       return `axios.${requestMethod}(apiUrl,{params})`

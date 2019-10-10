@@ -1,10 +1,10 @@
 {
   "name": "t-swagger-generate",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "",
   "main": "script/index.js",
   "scripts": {
-    "start": "supervisor node script/index"
+    "start": "supervisor node script/test"
   },
   "bin": {
     "tang": "./bin/tang-cli.js"
